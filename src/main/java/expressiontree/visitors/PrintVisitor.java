@@ -63,4 +63,12 @@ public class PrintVisitor implements Visitor {
     public void visit(CompositeMultiplyNode node) {
         Platform.instance().addString((char) node.getItem() + " ");
     }
+
+    /**
+     * Visit a @a CompositeMultiplyNode and print its contents.
+     */
+    public void visit(CompositeModNode node) {
+        Platform.instance().addString((char) node.getItem() + " ");
+    }
+
 }

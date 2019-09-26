@@ -7,12 +7,12 @@ import expressiontree.visitors.Visitor;
  * is mLeft + mRight.  It plays the role of a "Composite" in the
  * Composite pattern.
  */
-public class CompositeAddNode extends CompositeBinaryNode {
+public class CompositeModNode extends CompositeBinaryNode {
 
     /**
      * Constructor.
      */
-    public CompositeAddNode(ComponentNode left, ComponentNode right)
+    public CompositeModNode(ComponentNode left, ComponentNode right)
     {
         super(left, right);
     }
@@ -22,23 +22,23 @@ public class CompositeAddNode extends CompositeBinaryNode {
      */
     public int getType()
     {
-        return sADDITION;
+        return sMODULUS;
     }
 
-    /** 
-     * Return the printable character stored in the node. 
+    /**
+     * Return the printable character stored in the node.
      */
     public int getItem()
     {
-	return '+';
+        return '%';
     }
 
-    /** 
+    /**
      * Define the {@code accept()} operation used for the Visitor pattern
      * to accept the {@code visitor}.
      */
     public void accept(Visitor visitor)
     {
-	visitor.visit(this);
+        visitor.visit(this);
     }
 }

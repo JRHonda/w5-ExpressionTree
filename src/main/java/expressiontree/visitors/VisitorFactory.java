@@ -9,12 +9,14 @@ import java.util.HashMap;
  * the role of the ConcreteCreator in the Factory Method pattern.
  */
 public class VisitorFactory {
+
     /**
      * This interface uses the Command pattern to create @a Visitor
      * implementations at runtime.
      */
     @FunctionalInterface
-    private interface VisitorFactoryCommand {
+    private interface VisitorFactoryCommand
+    {
         Visitor execute();
     }
 
@@ -28,7 +30,8 @@ public class VisitorFactory {
     /**
      * Constructor.
      */
-    public VisitorFactory() {
+    public VisitorFactory()
+    {
         // The VisitorFactory maps strings to an interface capable of
         // building the appropriate @a Visitor implementation at
         // runtime.
@@ -46,7 +49,8 @@ public class VisitorFactory {
      * Create a new @a Visitor object based on the caller's
      * designated @a visitorRequest.
      */
-    public Visitor makeVisitor(String visitorRequest) {
+    public Visitor makeVisitor(String visitorRequest)
+    {
         // Try to find the pre-allocated factory command. 
         VisitorFactoryCommand command = visitorMap.get(visitorRequest);
 

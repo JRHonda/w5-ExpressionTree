@@ -42,4 +42,9 @@ public interface Visitor {
      * Visit a @a CompositeMultiplyNode. 
      */
     void visit(CompositeMultiplyNode node);
+
+    /**
+     * Visit a @a CompositeModNode.
+     */
+    void visit(CompositeModNode node);
 }

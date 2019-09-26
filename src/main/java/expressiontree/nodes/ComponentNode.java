@@ -10,6 +10,7 @@ import expressiontree.visitors.Visitor;
  * Composite pattern needn't implement methods they don't care about.
  */
 public interface ComponentNode {
+
     /*
      * The following constants uniquely identify the type of
      * each terminal symbol.
@@ -24,13 +25,15 @@ public interface ComponentNode {
     public final static int sID = 7;
     public final static int sNUMBER = 8;
     public final static int sDELIMITER = 9;
+    // TODO - TEST
+    public final static int sMODULUS = 10;
 
     /**
      * The relative precedence of each terminal symbol above when
      * it appears at the top of the stack.
      */
     public final static int mTopOfStackPrecedence[] = {
-            12, 11, 7, 6, 10, 2, 3, 15, 14, 1
+            12, 11, 6, 5, 9, 1, 2, 14, 13, 0, 10
     };
 
     /**
@@ -38,7 +41,7 @@ public interface ComponentNode {
      * it appears as the current token.
      */
     public final static int mCurrentTokenPrecedence[] = {
-            9, 8, 5, 4, 13, 18, 2, 17, 16, 1
+            9, 8, 4, 3, 12, 17, 1, 16, 15, 0, 7
     };
 
     /**

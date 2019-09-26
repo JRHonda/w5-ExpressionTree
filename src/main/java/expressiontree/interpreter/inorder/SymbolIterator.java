@@ -107,6 +107,9 @@ class SymbolIterator
             case '$':
                 latestSymbol = new Delimiter();
                 break;
+                case '%':
+                    latestSymbol = new Mod();
+                    break;
             default:
                 throw new RuntimeException("invalid character: " + c);
             }

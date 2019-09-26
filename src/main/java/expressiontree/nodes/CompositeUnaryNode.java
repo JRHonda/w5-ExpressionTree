@@ -5,8 +5,8 @@ package expressiontree.nodes;
  * unary operations.  It plays the role of a "Composite" in the
  * Composite pattern.
  */
-public class CompositeUnaryNode
-       implements ComponentNode {
+public class CompositeUnaryNode implements ComponentNode {
+
     /** 
      * Reference to the getRightChild child.
      */
@@ -15,14 +15,16 @@ public class CompositeUnaryNode
     /**
      * Constructor.
      */
-    CompositeUnaryNode(ComponentNode right) {
+    CompositeUnaryNode(ComponentNode right)
+    {
         mRight = right;
     }
 	
     /** 
      * Return the getRightChild child.
      */
-    public ComponentNode getRightChild() {
+    public ComponentNode getRightChild()
+    {
         return mRight;
     }
 }

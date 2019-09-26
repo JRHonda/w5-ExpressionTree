@@ -118,8 +118,8 @@ abstract class BinaryExpr
     /**
      * Constructor.
      */
-    BinaryExpr(Expr leftExpression,
-               Expr rightExpresion) {
+    BinaryExpr(Expr leftExpression, Expr rightExpresion)
+    {
         mLeftExpr = leftExpression;
         mRightExpr = rightExpresion;
     }
@@ -129,13 +129,12 @@ abstract class BinaryExpr
  * A parse tree interpreter/builder that handles the binary multiply
  * operator non-terminal expression.
  */
-class MultiplyExpr
-      extends BinaryExpr {
+class MultiplyExpr extends BinaryExpr {
     /**
      * Constructor.
      */ 
-    MultiplyExpr(Expr leftExpression,
-                 Expr rightExpression) {
+    MultiplyExpr(Expr leftExpression, Expr rightExpression)
+    {
         super(leftExpression, rightExpression);
     }
 
@@ -144,9 +143,9 @@ class MultiplyExpr
      * right expressions.
      */
     @Override
-    public int interpret() {
-        return mLeftExpr.interpret() 
-            * mRightExpr.interpret();
+    public int interpret()
+    {
+        return mLeftExpr.interpret() * mRightExpr.interpret();
     }
 
     /**
@@ -154,9 +153,9 @@ class MultiplyExpr
      * the Builder pattern.
      */
     @Override
-    public ComponentNode build() {
-        return new CompositeMultiplyNode(mLeftExpr.build(),
-                                         mRightExpr.build());
+    public ComponentNode build()
+    {
+        return new CompositeMultiplyNode(mLeftExpr.build(), mRightExpr.build());
     }
 }
 
@@ -164,13 +163,12 @@ class MultiplyExpr
  * A parse tree interpreter/builder that handles the binary divide
  * operator non-terminal expression.
  */
-class DivideExpr
-      extends BinaryExpr {
+class DivideExpr extends BinaryExpr {
     /**
      * Constructor.
      */ 
-    DivideExpr(Expr leftExpression,
-               Expr rightExpression) {
+    DivideExpr(Expr leftExpression, Expr rightExpression)
+    {
         super(leftExpression, rightExpression);
     }
 
@@ -179,9 +177,9 @@ class DivideExpr
      * right expressions.
      */
     @Override
-    public int interpret() {
-        return mLeftExpr.interpret() 
-            / mRightExpr.interpret();
+    public int interpret()
+    {
+        return mLeftExpr.interpret() / mRightExpr.interpret();
     }
 
     /**
@@ -199,13 +197,12 @@ class DivideExpr
  * A parse tree interpreter/builder that handles the binary add
  * operator non-terminal expression.
  */
-class AddExpr
-      extends BinaryExpr {
+class AddExpr extends BinaryExpr {
     /**
      * Constructor.
      */ 
-    AddExpr(Expr leftExpression,
-            Expr rightExpression) {
+    AddExpr(Expr leftExpression, Expr rightExpression)
+    {
         super(leftExpression, rightExpression);
     }
 
@@ -214,9 +211,9 @@ class AddExpr
      * expressions.
      */
     @Override
-    public int interpret() {
-        return mLeftExpr.interpret()
-            + mRightExpr.interpret();
+    public int interpret()
+    {
+        return mLeftExpr.interpret() + mRightExpr.interpret();
     }
 
     /**
@@ -224,9 +221,9 @@ class AddExpr
      * Builder pattern.
      */
     @Override
-    public ComponentNode build() {
-        return new CompositeAddNode(mLeftExpr.build(),
-                                    mRightExpr.build());
+    public ComponentNode build()
+    {
+        return new CompositeAddNode(mLeftExpr.build(), mRightExpr.build());
     }
 }
 
@@ -234,13 +231,12 @@ class AddExpr
  * A parse tree interpreter/builder that handles the binary subtract
  * operator non-terminal expression.
  */
-class SubtractExpr
-      extends BinaryExpr {
+class SubtractExpr extends BinaryExpr {
     /**
      * Constructor.
      */ 
-    SubtractExpr(Expr leftExpression,
-                 Expr rightExpression) {
+    SubtractExpr(Expr leftExpression, Expr rightExpression)
+    {
         super(leftExpression, rightExpression);
     }
 
@@ -249,9 +245,9 @@ class SubtractExpr
      * the stored right expression.
      */
     @Override
-    public int interpret() {
-        return mLeftExpr.interpret() 
-            - mRightExpr.interpret();
+    public int interpret()
+    {
+        return mLeftExpr.interpret() - mRightExpr.interpret();
     }
 
     /**
@@ -259,9 +255,43 @@ class SubtractExpr
      * the Builder pattern.
      */
     @Override
-    public ComponentNode build() {
-        return new CompositeSubtractNode(mLeftExpr.build(),
-                                         mRightExpr.build());
+    public ComponentNode build()
+    {
+        return new CompositeSubtractNode(mLeftExpr.build(), mRightExpr.build());
+    }
+}
+
+/**
+ * A parse tree interpreter/builder that handles the binary multiply
+ * operator non-terminal expression.
+ */
+class ModExpr extends BinaryExpr {
+    /**
+     * Constructor.
+     */
+    ModExpr(Expr leftExpression, Expr rightExpression)
+    {
+        super(leftExpression, rightExpression);
+    }
+
+    /**
+     * Interpret the non-terminal by multiplying the stored left and
+     * right expressions.
+     */
+    @Override
+    public int interpret()
+    {
+        return mLeftExpr.interpret() % mRightExpr.interpret();
+    }
+
+    /**
+     * Hook method for building a {@code CompositeMultipleNode} a la
+     * the Builder pattern.
+     */
+    @Override
+    public ComponentNode build()
+    {
+        return new CompositeModNode(mLeftExpr.build(), mRightExpr.build());
     }
 }
 

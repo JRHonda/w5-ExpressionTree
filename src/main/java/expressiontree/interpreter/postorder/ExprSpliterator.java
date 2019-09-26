@@ -97,6 +97,9 @@ class ExprSpliterator
                         mStack.push(new DivideExpr(mStack.pop(),
                                                    rightExpr));
                         break;
+                    case '%':
+                        // Modulus Operation
+                        mStack.push(new ModExpr(mStack.pop(), rightExpr));
                     default:
                         throw new RuntimeException("invalid character: " + c);
                 }
@@ -120,8 +123,7 @@ class ExprSpliterator
         // result of the charAt() statement.
         if (input.length() > startIndex + endIndex)
             // Locate the end of the number.
-            for(;
-                startIndex + endIndex < input.length ()
+            for(; startIndex + endIndex < input.length ()
                     && Character.isDigit(input.charAt(startIndex + endIndex));
                 ++endIndex)
                 //noinspection UnnecessaryContinue

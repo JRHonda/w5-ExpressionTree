@@ -15,6 +15,7 @@ import java.util.Queue;
  * pattern.
  */
 public class IteratorFactory {
+
     /*
      * Constants that determine the traversal order.
      */
@@ -28,7 +29,8 @@ public class IteratorFactory {
      * implementations at runtime.
      */
     @FunctionalInterface
-    public interface IteratorFactoryCommand {
+    public interface IteratorFactoryCommand
+    {
         Iterator<ExpressionTree> execute(ExpressionTree tree);
     }
 
@@ -37,13 +39,13 @@ public class IteratorFactory {
      * implementations and dispatch the execute() method of the
      * requested iterator. .
      */
-    private HashMap<String, IteratorFactoryCommand> mIteratorMap =
-            new HashMap<>();
+    private HashMap<String, IteratorFactoryCommand> mIteratorMap = new HashMap<>();
 
     /**
      * Constructor.
      */
-    public IteratorFactory() {
+    public IteratorFactory()
+    {
         /*
          * The IteratorFactory maps strings to an interface capable of
          * building the appropriate {@code Iterator} implementation at
@@ -71,7 +73,8 @@ public class IteratorFactory {
      * Create a new @a Iterator implementation based on the caller's
      * designated @a traversalOrderRequest.
      */
-    public Iterator<ExpressionTree> iterator(ExpressionTree tree, String traversalOrderRequest) {
+    public Iterator<ExpressionTree> iterator(ExpressionTree tree, String traversalOrderRequest)
+    {
         if (traversalOrderRequest.equals(""))
             // Default to in-order if user doesn't explicitly request
             // a traversal order.
@@ -103,7 +106,8 @@ public class IteratorFactory {
         /**
          * Constructor.
          */
-        public LevelOrderIterator(ExpressionTree tree) {
+        public LevelOrderIterator(ExpressionTree tree)
+        {
             if (!tree.isNull())
                 queue.add(tree);
         }
@@ -111,7 +115,8 @@ public class IteratorFactory {
         /**
          * Moves iterator to the next expression tree in the stack.
          */
-        public ExpressionTree next() {
+        public ExpressionTree next()
+        {
             // Store the current front element in the queue.
             ExpressionTree result = queue.peek();
 
@@ -144,7 +149,8 @@ public class IteratorFactory {
         /**
          * Removes an expression tree from the front of the queue.
          */
-        public void remove() {
+        public void remove()
+        {
             queue.remove();
         }
     }

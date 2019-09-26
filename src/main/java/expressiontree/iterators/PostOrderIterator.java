@@ -11,6 +11,7 @@ import java.util.Stack;
  * post-order iteration algorithm.
  */
 public class PostOrderIterator implements Iterator<ExpressionTree> {
+
     /**
      * Stack of expression trees.
      */
@@ -19,23 +20,31 @@ public class PostOrderIterator implements Iterator<ExpressionTree> {
     /**
      * Constructor.
      */
-    PostOrderIterator(ExpressionTree tree) {
-        if (!tree.isNull()) {
+    PostOrderIterator(ExpressionTree tree)
+    {
+        if (!tree.isNull())
+        {
             mStack.push(tree);
 
             // The Commented code does not work on unary operator
             // nodes with no mLeft child, but a mRight child - or at
             // least, there is a certain depth that this will not go
             // down.
-            while (!tree.isNull()) {
+            while (!tree.isNull())
+            {
                 if (!tree.getRightChild().isNull())
+
                     mStack.push(tree.getRightChild());
-                if (!tree.getLeftChild().isNull()) {
+
+                if (!tree.getLeftChild().isNull())
+                {
                     // If there was a mLeft, then update current this
                     // is the case for all non-negations.
                     mStack.push(tree.getLeftChild());
                     tree = tree.getLeftChild();
-                } else {
+                }
+                else
+                {
                     // If there was not a mLeft, then current =
                     // current.right_ this handles cases of unary
                     // nodes, like negations.
@@ -48,49 +57,57 @@ public class PostOrderIterator implements Iterator<ExpressionTree> {
     /**
      * Proceeds to next expression tree in the mStack.
      */
-    public ExpressionTree next() {
+    public ExpressionTree next()
+    {
         ExpressionTree result = mStack.peek();
-        if (!mStack.isEmpty()) {
+        if (!mStack.isEmpty())
+        {
             // We need to pop the node off the mStack before pushing
             // the children, or else we'll revisit this node later.
             ExpressionTree temp = mStack.pop();
 
             if (!mStack.isEmpty()
                     && mStack.peek().getLeftChild().getRoot() != temp.getRoot()
-                    && mStack.peek().getRightChild().getRoot() != temp.getRoot()) {
+                    && mStack.peek().getRightChild().getRoot() != temp.getRoot())
+            {
                 temp = mStack.peek();
 
-                while (!temp.isNull()) {
+                while (!temp.isNull())
+                {
                     if (!temp.getRightChild().isNull())
                         mStack.push(temp.getRightChild());
-                    if (!temp.getLeftChild().isNull()) {
+                    if (!temp.getLeftChild().isNull())
+                    {
                         // If there was a mLeft, then update temp this
                         // is the case for all non-negations.
                         mStack.push(temp.getLeftChild());
                         temp = temp.getLeftChild();
-                    } else
+                    }
+                    else {
                         // If there was not a mLeft, then temp =
                         // temp.mRight this handles cases of unary
                         // nodes, like negations.
                         temp = temp.getRightChild();
+                    }
                 }
             }
         }
-
         return result;
     }
 
     /**
      * Returns false if mStack is empty.
      */
-    public boolean hasNext() {
+    public boolean hasNext()
+    {
         return !mStack.empty();
     }
 
     /**
      * Removes an expression tree from the top of the mStack.
      */
-    public void remove() {
+    public void remove()
+    {
         mStack.pop();
     }
 }

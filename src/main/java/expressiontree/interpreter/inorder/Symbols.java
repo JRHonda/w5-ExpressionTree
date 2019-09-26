@@ -10,6 +10,7 @@ import static expressiontree.nodes.ComponentNode.*;
  * the role of the Builder in the Builder pattern.
  */
 abstract class Symbol {
+
     /*
      * The following fields comprise the state of each Symbol.
      */
@@ -32,9 +33,8 @@ abstract class Symbol {
     /** 
      * Constructor. 
      */
-    Symbol(Symbol left,
-           Symbol right,
-           int symbolType) {
+    Symbol(Symbol left, Symbol right, int symbolType)
+    {
         mLeft = left;
         mRight = right;
         mSymbolType = symbolType;
@@ -98,12 +98,9 @@ abstract class Operator
     /** 
      * Constructor.
      */
-    Operator(Symbol left,
-             Symbol right,
-             int tokenClass) {
-        super(left,
-              right,
-              tokenClass);
+    Operator(Symbol left, Symbol right, int tokenClass)
+    {
+        super(left, right, tokenClass);
     }
 }
 
@@ -295,5 +292,29 @@ class Delimiter
         super(null,
               null,
               sDELIMITER);
+    }
+}
+
+/**
+ * A parse tree node that handles the binary multiply operator
+ * non-terminal expression.
+ */
+class Mod extends Operator {
+    /**
+     * Constructor.
+     */
+    Mod() {
+        super(null,
+                null,
+                sMODULUS);
+    }
+
+    /**
+     * Method for building a {@code Multiply} node a la the Builder
+     * pattern.
+     */
+    ComponentNode build() {
+        return new CompositeModNode(mLeft.build(),
+                mRight.build());
     }
 }

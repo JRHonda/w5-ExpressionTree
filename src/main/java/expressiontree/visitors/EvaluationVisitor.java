@@ -86,10 +86,35 @@ public class EvaluationVisitor implements Visitor {
     /**
      * Visit a {@code CompositeMultiplyNode}.
      */
-    public void visit(CompositeMultiplyNode node) {
+    public void visit(CompositeMultiplyNode node)
+    {
         if (mStack.size() >= 2)
             mStack.push(mStack.pop() * mStack.pop());
     }
+
+    /**
+     * Visit a {@code CompositeModNode}.
+     */
+    public void visit(CompositeModNode node)
+    {
+        if (mStack.size() >= 2)
+        {
+            int rhs = mStack.pop();
+            if (rhs != 0)
+            {
+                System.out.print("Perform Modulus operation");
+                mStack.push(mStack.pop() % rhs);
+            } else {
+                Platform platform = Platform.instance();
+                platform.errorLog("EvaluationVisitor",
+                        "\n\n**: Division by zero is not allowed. ");
+                platform.errorLog("EvaluationVisitor",
+                        "Resetting evaluation visitor.\n\n");
+                reset();
+            }
+        }
+    }
+
 
     /**
      * Print the total of the evaluation.

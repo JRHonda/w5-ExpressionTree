@@ -14,6 +14,7 @@ import java.util.Iterator;
  * expression tree operations.
  */
 public class ExpressionTree implements Iterable<ExpressionTree> {
+
     /**
      * Base implementor.
      */
@@ -28,49 +29,56 @@ public class ExpressionTree implements Iterable<ExpressionTree> {
      * Constructor that takes a {@code Node} that contains all the
      * nodes in the expression tree.
      */
-    public ExpressionTree(ComponentNode root) {
+    public ExpressionTree(ComponentNode root)
+    {
         mRoot = root;
     }
 
     /**
      * Returns whether the tree is null.
      */
-    public boolean isNull() {
+    public boolean isNull()
+    {
         return mRoot == null;
     }
 
     /**
      * Returns root.
      */
-    public ComponentNode getRoot() {
+    public ComponentNode getRoot()
+    {
         return mRoot;
     }
 
     /**
      * Returns the root's getItem.
      */
-    public int getItem() throws Exception {
+    public int getItem() throws Exception
+    {
         return mRoot.getItem();
     }
 
     /**
      * Returns a new ExpressionTree containing the tree's getLeftChild child.
      */
-    public ExpressionTree getLeftChild() {
+    public ExpressionTree getLeftChild()
+    {
         return new ExpressionTree(mRoot.getLeftChild());
     }
 
     /**
      * Returns a new ExpressionTree containing the tree's getRightChild child.
      */
-    public ExpressionTree getRightChild() {
+    public ExpressionTree getRightChild()
+    {
         return new ExpressionTree(mRoot.getRightChild());
     }
 
     /**
      * Accepts a {@code visitor}.
      */
-    public void accept(Visitor visitor) {
+    public void accept(Visitor visitor)
+    {
         mRoot.accept(visitor);
     }
 
@@ -78,7 +86,8 @@ public class ExpressionTree implements Iterable<ExpressionTree> {
      * Returns an {@code Iterator} that supports the requested
      * traveralOrder.
      */
-    public Iterator<ExpressionTree> makeIterator(String traversalOrderRequest) {
+    public Iterator<ExpressionTree> makeIterator(String traversalOrderRequest)
+    {
         // Use the TreeIteratorFactory to create the requested
         return mTreeIteratorFactory.iterator(this, traversalOrderRequest);
     }
@@ -87,7 +96,8 @@ public class ExpressionTree implements Iterable<ExpressionTree> {
      * Returns an {@code Iterator} that supports pre-order traversal.
      */
     @Override
-    public Iterator<ExpressionTree> iterator() {
+    public Iterator<ExpressionTree> iterator()
+    {
         return makeIterator(IteratorFactory.PRE_ORDER);
     }
 }

@@ -9,11 +9,13 @@ import expressiontree.nodes.ComponentNode;
  * {@code makeExpressionTree()} factory method.
  */
 public class ExpressionTreeFactory {
+
     /** 
      * Create a new {@code ExpressionTree} object that encapsulates the {@code
      * componentNodeRoot} that's passed as a parameter.
      */
-    public ExpressionTree makeExpressionTree(ComponentNode componentNodeRoot) {
+    public ExpressionTree makeExpressionTree(ComponentNode componentNodeRoot)
+    {
         return new ExpressionTree(componentNodeRoot);
     }
 }

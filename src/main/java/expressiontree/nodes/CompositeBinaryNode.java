@@ -4,8 +4,8 @@ package expressiontree.nodes;
  * Defines a mLeft and mRight node (via inheritance).  It plays the role
  * of a "Composite" in the Composite pattern.
  */
-public class CompositeBinaryNode
-       extends CompositeUnaryNode {
+public class CompositeBinaryNode extends CompositeUnaryNode {
+
     /** 
      * Reference to the getLeftChild child.
      */
@@ -14,8 +14,8 @@ public class CompositeBinaryNode
     /**
      * Constructor initializes the fields.
      */
-    CompositeBinaryNode(ComponentNode left,
-                        ComponentNode right) {
+    CompositeBinaryNode(ComponentNode left, ComponentNode right)
+    {
         super(right);
         mLeft = left;
     }
@@ -23,7 +23,8 @@ public class CompositeBinaryNode
     /** 
      * Return the getLeftChild child.
      */
-    public ComponentNode getLeftChild() {
+    public ComponentNode getLeftChild()
+    {
 	return mLeft;
     }
 }

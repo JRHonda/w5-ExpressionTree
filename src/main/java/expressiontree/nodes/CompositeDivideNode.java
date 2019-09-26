@@ -7,27 +7,28 @@ import expressiontree.visitors.Visitor;
  * node is mLeft / mRight.  It plays the role of a "Composite" in the
  * Composite pattern.
  */
-public class CompositeDivideNode 
-       extends CompositeBinaryNode {
+public class CompositeDivideNode extends CompositeBinaryNode {
     /**
      * Constructor.
      */
-    public CompositeDivideNode(ComponentNode left,
-                               ComponentNode right) {
+    public CompositeDivideNode(ComponentNode left, ComponentNode right)
+    {
         super(left, right);
     }
 
     /**
      * Return the type of the node.
      */
-    public int getType() {
+    public int getType()
+    {
         return sDIVISION;
     }
 
     /** 
      * Return the printable character stored in the node. 
      */
-    public int getItem() {
+    public int getItem()
+    {
 	return '/';
     }
 
@@ -35,7 +36,8 @@ public class CompositeDivideNode
      * Define the @a accept() operation used for the Visitor pattern
      * to accept the @a visitor.
      */
-    public void accept(Visitor visitor) {
+    public void accept(Visitor visitor)
+    {
 	visitor.visit(this);
     }
 }
